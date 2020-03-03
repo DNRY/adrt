@@ -6,6 +6,9 @@
 Welcome to ADRT's documentation!
 ================================
 
+.. automodule:: adrt
+   :members:
+
 Contents:
 
 .. toctree::
