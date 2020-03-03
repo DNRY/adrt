@@ -3,16 +3,20 @@ language: python
 python:
   - "2.7"
   - "3.5"
-  
+
 os:
   - linux
 
 # command to install dependencies
-install: 
+install:
   - pip install -q -U pip setuptools nose coveralls
   - pip install --upgrade pip setuptools wheel
   - pip install --only-binary=numpy,scipy numpy scipy
 
 # command to run tests
-script: 
+script:
   - nosetests --with-coverage --cover-package=adrt
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+  - coveralls
