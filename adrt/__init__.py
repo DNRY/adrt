@@ -2,7 +2,7 @@
 ADRT
 ===============
 
-``adrt`` is a software package written in ``Python`` for Hyperbolic PDE.
+``adrt`` is a software package written in ``Python`` for Discrete Random Transform.
 
 Example
 -------
@@ -26,5 +26,7 @@ If a section is indented, then a section break is created simply by
 resuming unindented text.
 
 """
-__author__ = ("Don Rim <dr2965@columbia.edu>",
+__author__ = ("Don Rim <dr1653@nyu.edu>",
 	"Yoon-gu Hwang <yoongu.hwang@gmail.com>")
+
+from .adrt import *
