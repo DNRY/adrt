@@ -5,14 +5,16 @@ class BinaryDistribution(Distribution):
 		return False
 
 setup(	name='adrt', version='0.0',
-		description='PDE Solver Package',
+		description='Approximate Discrete Radon Transform',
 		url='https://github.com/dnry/adrt/',
-		author='Yoon-gu Hwang',
-		author_email='yz0624@gmail.com',
+		author='Donsub Rim, Yoon-gu Hwang',
+		author_email='dr1653@nyu.edu, yz0624@gmail.com',
 		license='BSD 3-clause "New" or "Revised License"',
 		packages=find_packages(),
 		install_requires=[
 			'numpy',
+			'scipy',
+			'matplotlib'
 		],
 		distclass=BinaryDistribution,
 		zip_safe=False)
