@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def density(n):
     nn = 2*n
     nnn = 3*n
@@ -22,15 +23,16 @@ def density(n):
             elif (i+1 >= nn+1):
                 val = 0.0
 
-            da[i,j] = val
+            da[i, j] = val
     return da
+
 
 def drt(a):
     n = a.shape[0]
     nn, nnn = 2*n, 3*n
 
     da = np.zeros((nnn, a.shape[1]))
-    dat = np.zeros((nnn,n))
+    dat = np.zeros((nnn, n))
     for i in range(0, nnn):
         for j in range(0, n):
             if ((i >= n) and (i+1 <= nn)):
@@ -43,16 +45,17 @@ def drt(a):
             for i in range(0, n, m):
                 for h in range(0, nnn):
                     if (h+1 <= nnn-s):
-                        da[h, i+2*s] = dat[h,i+s] + dat[h+s,i+mh+s]
+                        da[h, i+2*s] = dat[h, i+s] + dat[h+s, i+mh+s]
                     if (h+1 <= nnn-s-1):
-                        da[h, i+1+2*s] = dat[h,i+s] + dat[h+1+s,i+mh+s]
+                        da[h, i+1+2*s] = dat[h, i+s] + dat[h+1+s, i+mh+s]
 
         dat = np.copy(da)
         m = 2*m
         mh = 2*mh
     return da
 
-def pdrt(a,pl):
+
+def pdrt(a, pl):
     a_sz1, a_sz2 = a.shape
 
     n = a_sz1
@@ -67,7 +70,7 @@ def pdrt(a,pl):
     for i in range(pnnn):
         for j in range(pn):
             if ((i+1 >= pn+1) and (i+1 <= pnn)):
-                dat[i,j] = a[(i+1 - pn - 1)/pl, (j+1-1)/pl]
+                dat[i, j] = a[(i+1 - pn - 1)/pl, (j+1-1)/pl]
 
     da = np.zeros((3 * pl * a_sz1, pl * a_sz2))
 
@@ -78,27 +81,30 @@ def pdrt(a,pl):
             for i in range(0, pn, m):
                 for h in range(pnnn):
                     if (h+1 <= pnnn-s):
-                        da[h, i+1+2*s-1] = dat[h,i+s] + dat[h+s,i+mh+s]
+                        da[h, i+1+2*s-1] = dat[h, i+s] + dat[h+s, i+mh+s]
                     if (h+1 <= pnnn-s-1):
-                        da[h, i+2*s+1] = dat[h,i+s] + dat[h+s+1,i+mh+s]
+                        da[h, i+2*s+1] = dat[h, i+s] + dat[h+s+1, i+mh+s]
         dat = np.copy(da)
         m = 2*m
         mh = 2*mh
 
     return da
 
-def pdrtq(a,p,q,da):
+
+def pdrtq(a, p, q, da):
     return None
 
-def bdrtq(da,q,ba):
+
+def bdrtq(da, q, ba):
     return None
+
 
 def bdrt(da):
     n = da.shape[1]
     nn, nnn = 2*n, 3*n
 
-    bat = np.zeros((nnn,n))
-    batwork = np.zeros((nnn,n))
+    bat = np.zeros((nnn, n))
+    batwork = np.zeros((nnn, n))
 
     bat = np.copy(da)
 
@@ -108,37 +114,46 @@ def bdrt(da):
         for h in range(0, nnn):
             for s in range(0, mh):
                 for i in range(0, n, m):
-                    batwork[h, i+s] = bat[h,i+2*s] + bat[h,i+2*s+1]
+                    batwork[h, i+s] = bat[h, i+2*s] + bat[h, i+2*s+1]
                     if ((h+1 >= 2) and (h+1+s <= nnn)):
-                       batwork[h+s, i+s+mh] = bat[h,i+2*s] + bat[h-1,i+2*s+1]
+                        batwork[h+s, i+s+mh] = bat[h, i+2*s] + \
+                            bat[h-1, i+2*s+1]
                     elif (h == 0):
-                       batwork[h+s, i+s+mh] = bat[h,i+2*s]
+                        batwork[h+s, i+s+mh] = bat[h, i+2*s]
         bat = np.copy(batwork)
         m = m / 2
 
-    ba = bat[n:nn,:]
+    ba = bat[n:nn, :]
     return ba
 
-def drtaq(a,daa,dab,dac,dad):
+
+def drtaq(a, daa, dab, dac, dad):
     return None
 
-def bdrtaq(daa,dab,dac,dad,ba):
+
+def bdrtaq(daa, dab, dac, dad, ba):
     return None
 
-def pdrtaq(a,pl,daa,dab,dac,dad):
+
+def pdrtaq(a, pl, daa, dab, dac, dad):
     return None
 
-def pdrtqaq(a,p,q,daa,dab,dac,dad):
+
+def pdrtqaq(a, p, q, daa, dab, dac, dad):
     return None
 
-def rbdrtaq(daa,dab,dac,dad,pl,rba):
+
+def rbdrtaq(daa, dab, dac, dad, pl, rba):
     return None
 
-def rbdrtqaq(daa,dab,dac,dad,pl,ql,rba):
+
+def rbdrtqaq(daa, dab, dac, dad, pl, ql, rba):
     return None
 
-def pmatmul(x,pl,ax):
+
+def pmatmul(x, pl, ax):
     return None
 
-def pmatmulq(x,pl,ql,ax):
+
+def pmatmulq(x, pl, ql, ax):
     return None
