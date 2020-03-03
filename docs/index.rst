@@ -6,13 +6,12 @@
 Welcome to ADRT's documentation!
 ================================
 
-.. automodule:: adrt
-   :members:
-
 Contents:
 
 .. toctree::
    :maxdepth: 2
+
+   adrt
 
 
 

@@ -26,7 +26,7 @@ If a section is indented, then a section break is created simply by
 resuming unindented text.
 
 """
-__author__ = ("Don Rim <dr1653@nyu.edu>",
+__author__ = ("Donsub Rim <dr1653@nyu.edu>",
 	"Yoon-gu Hwang <yoongu.hwang@gmail.com>")
 
 from .adrt import *
